@@ -1,6 +1,6 @@
 import type { Config } from "./types";
 
-export const config: Config = {
+export const siteConfig: Config = {
   name: "Anjali Pawar",
   title: "Lead QA Engineer | AI & Test Automation | Playwright Expert",
   description:
