@@ -15,37 +15,33 @@ export const siteConfig: Config = {
   aboutMe:
     "I'm a Lead QA Engineer with 11+ years of experience building scalable test automation frameworks and defining quality strategies across enterprise SaaS platforms. My core expertise is Playwright + Java — I've taken teams from 0% automation to 85% test coverage, cut regression cycles from 5 days to 10 hours, and led 12-member QA teams through end-to-end delivery. I treat automation as an engineering discipline, not a scripting task. Every framework I build is architected for maintainability — Page Object Model, CI/CD integration, Allure reporting, and reusable REST Assured suites that outlast the teams that built them. What drives me is the intersection of quality and AI — I'm actively building in AI-assisted testing using Playwright MCP and LLM-based workflows, because the next generation of QA engineers won't just write scripts. They'll design intelligent quality systems.",
   skills: [
-    {
-      name: "Test Automation",
-      description:
-        "Playwright, Selenium, Page Object Model, TestNG, Maven, TestRigor, BrowserStack",
-    },
-    {
-      name: "Languages",
-      description: "Java, HTML, CSS, SQL",
-    },
-    {
-      name: "API Testing",
-      description: "REST Assured, Postman, API Test Design",
-    },
-    {
-      name: "CI/CD & DevOps",
-      description: "Jenkins, GitHub Actions, Git, CI/CD Pipeline Design",
-    },
-    {
-      name: "Reporting & Management",
-      description: "Allure Reports, Jira, Confluence, TestRail",
-    },
-    {
-      name: "AI & Emerging Tools",
-      description:
-        "Claude AI, Playwright MCP, AI-assisted Test Generation, TestRigor",
-    },
-    {
-      name: "QA Methodologies",
-      description:
-        "Agile/Scrum, SDLC, UAT, Regression, Exploratory, Integration Testing, Risk-Based Testing, Shift-Left Testing",
-    },
+    "Playwright",
+    "Java",
+    "REST Assured",
+    "Postman",
+    "TestNG",
+    "Maven",
+    "Jenkins",
+    "GitHub Actions",
+    "Allure Reports",
+    "Page Object Model",
+    "SQL",
+    "Jira",
+    "TestRail",
+    "BrowserStack",
+    "TestRigor",
+    "Claude AI",
+    "Playwright MCP",
+    "Agile / Scrum",
+    "CI/CD",
+    "QA methodologies",
+    "QA Strategy",
+    "QA Planning",
+    "Release Delivery"
+  ],
+4. Scroll down → Commit changes → Commit changes
+
+Then check Actions tab — tell me green ✅ or red ❌.
   ],
   projects: [
     {
