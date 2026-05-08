@@ -39,19 +39,19 @@ export const siteConfig: Config = {
     {
       name: "Playwright Java Automation Framework",
       description: "End-to-end UI automation framework built with Playwright and Java targeting a live web application. Implements Page Object Model for maintainability, Allure Reports for rich test reporting, and Jenkins CI/CD pipeline for automated execution on every build.",
-      tags: ["Playwright", "Java", "Jenkins", "Allure Reports", "CI/CD"],
+      skills: ["Playwright", "Java", "Jenkins", "Allure Reports", "CI/CD"],
       link: "https://github.com/pawar-anjali/Automate-website-using-playwright-with-java",
     },
     {
       name: "AI-Assisted Portfolio Development",
       description: "Built this portfolio site using AI-assisted development, collaborating with Claude by Anthropic to design content architecture, write technical copy, and make platform decisions. Demonstrates practical application of AI tools in a real engineering workflow.",
-      tags: ["Claude AI", "GitHub Pages", "Astro", "Tailwind CSS"],
+      skills: ["Claude AI", "GitHub Pages", "Astro", "Tailwind CSS"],
       link: "https://github.com/pawar-anjali/pawar-anjali.github.io",
     },
     {
       name: "AI-Powered QA Agent with Playwright MCP",
       description: "Work in progress - building an AI-driven testing workflow using Playwright MCP and Claude to autonomously generate, execute, and evaluate test scenarios for web applications. Targeting self-healing locators and natural language test generation.",
-      tags: ["Playwright MCP", "Claude AI", "AI Testing", "Java"],
+      skills: ["Playwright MCP", "Claude AI", "AI Testing", "Java"],
       link: "https://github.com/pawar-anjali",
     },
   ],
