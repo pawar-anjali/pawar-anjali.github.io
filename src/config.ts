@@ -57,41 +57,71 @@ export const siteConfig: Config = {
   ],
   experience: [
     {
-      name: "Cornerstone OnDemand Enterprise Pvt. Ltd.",
-      description: "Lead QA Specialist, Nov 2023 to Nov 2025",
-      link: "https://www.cornerstoneondemand.com",
+      title: "Lead QA Specialist",
+      company: "Cornerstone OnDemand Enterprise Pvt. Ltd.",
+      dateRange: "Nov 2023 - Nov 2025",
+      bullets: [
+        "Led migration from manual to automated testing using Playwright and Java, achieving 85% test coverage and cutting regression time from 5 days to 10 hours.",
+        "Built and owned CI/CD pipeline integration with Jenkins, running automated suites on every production deployment and eliminating manual release validation.",
+        "Scaled a 12-member QA team by creating comprehensive test documentation and best practices guides, reducing onboarding time by 60%.",
+        "Drove end-to-end QA strategy in collaboration with Product and Engineering, reducing post-release bugs by 40%.",
+      ],
     },
     {
-      name: "EdCast Asia Private Ltd.",
-      description: "Senior QA Engineer, Jun 2016 to Oct 2023",
-      link: "https://www.edcast.com",
+      title: "Senior QA Engineer",
+      company: "EdCast Asia Private Ltd.",
+      dateRange: "Jun 2016 - Oct 2023",
+      bullets: [
+        "Developed 300+ automated test scripts using Playwright and Java, resolving 200+ flaky test failures and improving suite reliability from 65% to 90%.",
+        "Designed 200+ test scenarios in TestRail and validated feature APIs via Postman across every sprint cycle, improving release quality by 30%.",
+        "Reduced API testing time by 50% by building a reusable REST Assured framework with 100+ test cases covering all critical endpoints.",
+        "Mentored 3 junior QA engineers on shift-left testing and requirement analysis, increasing team productivity by 25%.",
+      ],
     },
     {
-      name: "WAGmob Private Ltd.",
-      description: "QA Engineer, May 2014 to May 2016",
-      link: "https://wagmob.com",
+      title: "QA Engineer",
+      company: "WAGmob Private Ltd.",
+      dateRange: "May 2014 - May 2016",
+      bullets: [
+        "Executed functional, exploratory and UAT testing across Android, iOS and web, catching 25+ UI defects and preventing leakage from UAT to production.",
+        "Designed and executed 500+ manual test cases across desktop applications, strengthening requirement traceability before development sign-off.",
+        "Performed defect triage with dev teams, resolving 95% of high-priority issues within the same sprint cycle.",
+        "Validated cross-browser compatibility across Chrome, Firefox, Safari and Edge for 50K+ users.",
+      ],
     },
   ],
   education: [
     {
-      name: "Rajiv Gandhi Proudyogiki Vishwavidyalaya University",
-      description: "B.E. in Electronics and Communication, 2009 to 2013",
-      link: "",
+      degree: "Bachelor of Engineering - Electronics and Communication",
+      school: "Rajiv Gandhi Proudyogiki Vishwavidyalaya University",
+      dateRange: "2009 - 2013",
+      achievements: [
+        "Bachelor of Engineering in Electronics and Communication.",
+      ],
     },
     {
-      name: "REST API Testing - REST Assured Java, Udemy",
-      description: "Certification, Jan 2023",
-      link: "",
+      degree: "REST API Testing - REST Assured Java",
+      school: "Udemy",
+      dateRange: "Jan 2023",
+      achievements: [
+        "Automation testing certification covering REST Assured framework with Java.",
+      ],
     },
     {
-      name: "Mastering Core Java, Udemy",
-      description: "Certification, Dec 2024",
-      link: "",
+      degree: "Mastering Core Java",
+      school: "Udemy",
+      dateRange: "Dec 2024",
+      achievements: [
+        "Advanced Java programming certification covering core Java concepts.",
+      ],
     },
     {
-      name: "AI Fluency - Framework and Foundations, Anthropic",
-      description: "Certification, Apr 2026",
-      link: "",
+      degree: "AI Fluency - Framework and Foundations",
+      school: "Anthropic",
+      dateRange: "Apr 2026",
+      achievements: [
+        "AI fundamentals certification covering LLM frameworks and practical AI application.",
+      ],
     },
   ],
 };
