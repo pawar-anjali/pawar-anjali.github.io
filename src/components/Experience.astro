@@ -5,18 +5,11 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 
 {
   hasExperience && (
-    <section id="experience" class="p-8 sm:p-12 md:p-16 lg:p-24">
-      <div>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
-              Experience
-            </h2>
-            <div
-              class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
-            />
-          </div>
+    <section id="experience" class="px-8 py-16 sm:px-12 sm:py-20 md:px-24 md:py-24">
+  <div>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">Experience</h2>
+    <div class="w-16 h-1 rounded-full mb-10" style={`background-color: ${siteConfig.accentColor}`}></div>
+    <div>
 
           <div class="lg:col-span-8">
             <div class="relative">
@@ -68,7 +61,7 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
             </div>
           </div>
         </div>
-      </div>
+      
     </section>
   )
 }
