@@ -100,6 +100,8 @@ export const siteConfig: Config = {
         "Bachelor of Engineering in Electronics and Communication.",
       ],
     },
+  ],
+  certifications: [
     {
       degree: "REST API Testing - REST Assured Java",
       school: "Udemy",
