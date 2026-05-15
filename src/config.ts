@@ -11,7 +11,7 @@ export const siteConfig: Config = {
     github: "https://github.com/pawar-anjali",
     twitter: "",
   },
-  aboutMe: "I am a Lead QA Engineer with 11+ years of experience building scalable test automation frameworks and defining quality strategies across enterprise SaaS platforms. My core expertise is Playwright, REST Assured and Java. I have taken teams from 0% automation to 85% test coverage, cut regression cycles from 5 days to 10 hours, and led 12-member QA teams through end-to-end delivery. Every framework I build is architected for maintainability using Page Object Model, CI/CD integration, Allure reporting, and reusable REST Assured suites. What drives me is the intersection of quality and AI. I am actively building in AI-assisted testing using Playwright MCP and LLM-based workflows, because the next generation of QA engineers will design intelligent quality systems.",
+  aboutMe: "10+ years engineering quality into SaaS platforms that scale to 100 million users globally. From multi-tenant B2B enterprise to mobile, desktop, and web platforms across startup, acquisition, and global scale — I build automation frameworks from scratch, define quality strategy, and lead the teams that ship with confidence.",
   skills: [
     "Playwright",
     "Java",
