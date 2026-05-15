@@ -11,7 +11,7 @@ export const siteConfig: Config = {
     github: "https://github.com/pawar-anjali",
     twitter: "",
   },
-  aboutMe: "10+ years engineering quality into SaaS platforms that scale to 100 million users globally. From multi-tenant B2B enterprise to mobile, desktop, and web platforms across startup, acquisition, and global scale — I build automation frameworks from scratch, define quality strategy, and lead the teams that ship with confidence.",
+  aboutMe: "10+ years engineering quality into SaaS platforms that scale to 100 million users globally. From multi-tenant B2B enterprise to mobile, desktop, and web platforms across startup, acquisition, and global scale — I build the frameworks, own the strategy, and lead the teams that ship with confidence.",
   skills: [
     "Playwright",
     "Java",
