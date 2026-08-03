@@ -4,7 +4,7 @@ export const siteConfig: Config = {
   name: "Anjali Pawar",
   title: "Lead QA Engineer | AI & Test Automation | Playwright Expert",
   description: "Portfolio of Anjali Pawar - Lead QA Engineer specialising in Playwright automation, AI-assisted testing, and scalable QA frameworks.",
-  accentColor: "#7c3aed",
+  accentColor: "#C45A08",
   social: {
     email: "mail.anjalipawar@gmail.com",
     linkedin: "https://www.linkedin.com/in/pawaranjali",
