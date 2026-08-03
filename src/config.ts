@@ -4,7 +4,14 @@ export const siteConfig: Config = {
   name: "Anjali Pawar",
   title: "Lead QA Engineer | AI & Test Automation | Playwright Expert",
   description: "Portfolio of Anjali Pawar - Lead QA Engineer specialising in Playwright automation, AI-assisted testing, and scalable QA frameworks.",
-  accentColor: "#C45A08",
+  accentColor: "#b8913a",
+  tagline: "QA Strategy · Test Automation · AI Testing · Playwright",
+  heroQuote: "Quality is not an act, it is a habit — I build the frameworks that make it repeatable.",
+  stats: [
+    { value: "10+", label: "Years of experience" },
+    { value: "100M+", label: "Users served globally" },
+    { value: "85%", label: "Test coverage achieved" },
+  ],
   social: {
     email: "mail.anjalipawar@gmail.com",
     linkedin: "https://www.linkedin.com/in/pawaranjali",
