@@ -1,18 +1,3 @@
-@theme {
-  --color-ink: #0e0e0e;
-  --color-cream: #f7f4ef;
-  --color-cream-dark: #ede8df;
-  --color-gold: #b8913a;
-  --color-gold-light: #d4ae6a;
-  --color-muted: #6b6660;
-  --color-rule: #d9d3c8;
-  --color-accent-bg: #1a1714;
-  --color-warm-white: #faf9f6;
-
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-}
 
 :root {
   --ink: #0e0e0e;
