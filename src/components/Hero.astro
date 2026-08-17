@@ -7,35 +7,20 @@ import { siteConfig } from "../config";
   class="relative isolate overflow-hidden bg-white py-24 md:h-screen"
   style={`--accent-color: ${siteConfig.accentColor}`}
 >
-  <!-- Gradient overlay -->
   <div
     class="absolute inset-0 -z-10"
     style={`background: radial-gradient(ellipse 800px 1200px at 0% 0%, ${siteConfig.accentColor}40 0%, ${siteConfig.accentColor}25 20%, ${siteConfig.accentColor}10 40%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0.8) 90%, white 100%)`}
-  >
-  </div>
+  ></div>
+
   <svg
     aria-hidden="true"
     class="absolute inset-0 -z-10 size-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
   >
     <defs>
-      <pattern
-        x="50%"
-        y={-1}
-        id="0787a7c5-978c-4f66-83c7-11c213f99cb7"
-        width={200}
-        height={200}
-        patternUnits="userSpaceOnUse"
-      >
+      <pattern x="50%" y={-1} id="0787a7c5-978c-4f66-83c7-11c213f99cb7" width={200} height={200} patternUnits="userSpaceOnUse">
         <path d="M.5 200V.5H200" fill="none"></path>
       </pattern>
-      <pattern
-        id="programming-symbols"
-        x="0"
-        y="0"
-        width="400"
-        height="400"
-        patternUnits="userSpaceOnUse"
-      >
+      <pattern id="programming-symbols" x="0" y="0" width="400" height="400" patternUnits="userSpaceOnUse">
         <text x="50" y="50" fill={siteConfig.accentColor} font-family="monospace" font-size="24" transform="rotate(-15)">&lt;/&gt;</text>
         <text x="150" y="100" fill={siteConfig.accentColor} font-family="monospace" font-size="20" transform="rotate(10)">{}</text>
         <text x="250" y="80" fill={siteConfig.accentColor} font-family="monospace" font-size="18" transform="rotate(-5)">=&gt;</text>
@@ -87,9 +72,8 @@ import { siteConfig } from "../config";
     </div>
   </div>
 
-  >
-<div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 md:pr-96 animate-fade-in animation-delay-600">
-<!-- Stats -->
+  <!-- Stats + Buttons -->
+  <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 md:pr-96 animate-fade-in animation-delay-600">
     <div class="flex flex-wrap gap-8 mb-8 border-t pt-8 mt-4" style={`border-color: ${siteConfig.accentColor}33`}>
       <div>
         <p class="text-3xl md:text-4xl font-bold" style={`color: ${siteConfig.accentColor}`}>10+</p>
@@ -108,72 +92,60 @@ import { siteConfig } from "../config";
         <p class="text-xs font-medium tracking-widest uppercase text-gray-500 mt-1">Certifications</p>
       </div>
     </div>
-    <!-- Buttons -->
-    .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  background-color: var(--accent-color);
-  color: white;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  border: 2px solid var(--accent-color);
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-.btn-primary:hover {
-  background-color: transparent;
-  color: var(--accent-color);
-}
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  background-color: transparent;
-  color: var(--accent-color);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  border: 2px solid var(--accent-color);
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-.btn-outline:hover {
-  background-color: var(--accent-color);
-  color: white;
-}
+    <div class="flex flex-wrap gap-4">
+      <a href="#experience" class="hero-btn-primary">View Career Journey ↓</a>
+      <a href="#contact" class="hero-btn-outline">Get In Touch</a>
+    </div>
   </div>
-</div>
-  </div>
+
 </div>
 
 <style>
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
+  .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+
+  .hero-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.75rem;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--accent-color);
+    border-radius: 0.5rem;
+    transition: all 0.25s ease;
   }
-  .animation-delay-200 {
-    animation-delay: 0.2s;
+  .hero-btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent-color);
   }
-  .animation-delay-400 {
-    animation-delay: 0.4s;
+  .hero-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.75rem;
+    background-color: transparent;
+    color: var(--accent-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--accent-color);
+    border-radius: 0.5rem;
+    transition: all 0.25s ease;
   }
-  .animation-delay-600 {
-    animation-delay: 0.6s;
+  .hero-btn-outline:hover {
+    background-color: var(--accent-color);
+    color: white;
   }
 </style>
