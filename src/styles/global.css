@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+:root {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ink: #0e0e0e;
+  --cream: #f7f4ef;
+  --gold: #b8913a;
+  --gold-light: #d4ae6a;
+  --muted: #6b6660;
+  --rule: #d9d3c8;
+  --accent-bg: #1a1714;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
 body {
   font-family: "DM Sans", system-ui, sans-serif;
   font-size: 0.95rem;
@@ -8,4 +26,19 @@ body {
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
-@import "tailwindcss";
+
+::selection {
+  background-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  color: var(--ink);
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-heading {
