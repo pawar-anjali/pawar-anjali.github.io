@@ -1,47 +1,43 @@
----
-import { siteConfig } from "../config";
----
-
 <section id="contact" class="px-8 py-16 sm:px-12 sm:py-20 md:px-24 md:py-24">
   <p class="text-xs font-medium tracking-widest uppercase mb-6" style={`color: ${siteConfig.accentColor}`}>Contact</p>
 
-  <h2 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-2">Let's</h2>
-  <h2 class="text-5xl md:text-6xl font-bold italic mb-10" style={`color: ${siteConfig.accentColor}`}>connect</h2>
+  <div class="flex flex-col md:flex-row gap-16">
+    <!-- Left: Text -->
+    <div class="flex-1">
+      <h2 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-2">Let's</h2>
+      <h2 class="text-5xl md:text-6xl font-bold italic mb-10" style={`color: ${siteConfig.accentColor}`}>connect</h2>
+      <p class="text-gray-500 text-base leading-relaxed mb-3 max-w-md">
+        Whether you're looking for a QA leader, automation engineer, or AI quality specialist — I'd love to hear from you.
+      </p>
+      <p class="text-gray-500 text-base leading-relaxed max-w-md">
+        Currently based in Pune, India. Open to global remote and Japan-based roles.
+      </p>
+    </div>
 
-  <p class="text-gray-500 text-base leading-relaxed mb-3 max-w-md">
-    Whether you're looking for a QA leader, automation engineer, or AI quality specialist — I'd love to hear from you.
-  </p>
-  <p class="text-gray-500 text-base leading-relaxed mb-12 max-w-md">
-    Currently based in Pune, India. Open to global remote and Japan-based roles.
-  </p>
-
-  <div class="flex flex-col gap-4 max-w-xl">
-    <!-- Email -->
-    <a href={`mailto:${siteConfig.social.email}`} class="contact-card">
-      <span class="contact-icon" style={`color: ${siteConfig.accentColor}`}>✉</span>
-      <div>
-        <p class="text-gray-900 font-medium">{siteConfig.social.email}</p>
-        <p class="text-gray-400 text-sm">Email</p>
-      </div>
-    </a>
-
-    <!-- LinkedIn -->
-    <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="contact-card">
-      <span class="contact-icon font-bold" style={`color: ${siteConfig.accentColor}`}>in</span>
-      <div>
-        <p class="text-gray-900 font-medium">linkedin.com/in/pawaranjali</p>
-        <p class="text-gray-400 text-sm">LinkedIn</p>
-      </div>
-    </a>
-
-    <!-- GitHub -->
-    <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="contact-card">
-      <span class="contact-icon" style={`color: ${siteConfig.accentColor}`}>⌥</span>
-      <div>
-        <p class="text-gray-900 font-medium">github.com/pawar-anjali</p>
-        <p class="text-gray-400 text-sm">GitHub</p>
-      </div>
-    </a>
+    <!-- Right: Contact boxes -->
+    <div class="flex flex-col gap-4 flex-1">
+      <a href={`mailto:${siteConfig.social.email}`} class="contact-card">
+        <span class="contact-icon" style={`color: ${siteConfig.accentColor}`}>✉</span>
+        <div>
+          <p class="text-gray-900 font-medium">{siteConfig.social.email}</p>
+          <p class="text-gray-400 text-sm">Email</p>
+        </div>
+      </a>
+      <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="contact-card">
+        <span class="contact-icon font-bold" style={`color: ${siteConfig.accentColor}`}>in</span>
+        <div>
+          <p class="text-gray-900 font-medium">linkedin.com/in/pawaranjali</p>
+          <p class="text-gray-400 text-sm">LinkedIn</p>
+        </div>
+      </a>
+      <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="contact-card">
+        <span class="contact-icon" style={`color: ${siteConfig.accentColor}`}>⌥</span>
+        <div>
+          <p class="text-gray-900 font-medium">github.com/pawar-anjali</p>
+          <p class="text-gray-400 text-sm">GitHub</p>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
