@@ -1,6 +1,6 @@
+import type { Config } from "./types";
 
-
-export const siteConfig = {
+export const siteConfig: Config = {
   name: "Anjali Pawar",
   title: "Lead QA Engineer | AI & Test Automation | Playwright Expert",
   description: "Portfolio of Anjali Pawar - Lead QA Engineer specialising in Playwright automation, AI-assisted testing, and scalable QA frameworks.",
