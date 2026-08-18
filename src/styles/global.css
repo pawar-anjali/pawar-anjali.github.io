@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 body {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  background-color: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
 }
 @import "tailwindcss";
