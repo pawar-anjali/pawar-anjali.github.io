@@ -1,18 +1,35 @@
 ---
 import { siteConfig } from "../config";
 ---
-<section id="about" class="px-8 py-16 sm:px-12 sm:py-20 md:px-24 md:py-24">
-  <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">About Me</h2>
-  <div class="w-16 h-1 rounded-full mb-10" style={`background-color: ${siteConfig.accentColor}`}></div>
-  <p class="text-base sm:text-lg leading-relaxed text-gray-600 mb-10" style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.8;">
-    {siteConfig.aboutMe}
-  </p>
 
-  <div class="flex flex-wrap gap-3">
-    {siteConfig.skills.map((skill) => (
-      <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base font-medium hover:bg-gray-200 transition-colors duration-200">
-        {skill}
-      </span>
-    ))}
+<section id="about" class="px-8 py-16 sm:px-12 sm:py-20 md:px-24 md:py-24">
+  <p class="text-xs font-medium tracking-widest uppercase mb-6" style={`color: ${siteConfig.accentColor}`}>About</p>
+
+  <div class="flex flex-col md:flex-row gap-16">
+
+    <!-- Left: Tagline + Bio -->
+    <div class="flex-1">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">Quality by instinct.</h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">Engineer at the core.</h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-10">Builder of teams that ship.</h2>
+
+      <p class="text-gray-600 leading-relaxed mb-6" style="font-size: 0.95rem; line-height: 1.8;">
+        {siteConfig.aboutMe}
+      </p>
+    </div>
+
+    <!-- Right: Core Expertise -->
+    <div class="md:w-80 flex-shrink-0">
+      <p class="text-xs font-medium tracking-widest uppercase mb-6 text-gray-400">Core Expertise</p>
+      <div class="space-y-2">
+        {siteConfig.skills.map((skill) => (
+          <div class="flex items-center gap-3 py-3 px-4 border border-gray-100 bg-white hover:border-gray-300 transition-colors duration-200">
+            <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style={`background-color: ${siteConfig.accentColor}`}></span>
+            <span class="text-sm text-gray-700">{skill}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
   </div>
 </section>
