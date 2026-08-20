@@ -85,9 +85,13 @@ import { siteConfig } from "../config";
       </div>
     </div>
     <div class="flex flex-wrap gap-4">
-      <a href="#experience" class="hero-btn-primary">View Career Journey ↓</a>
-      <a href="#contact" class="hero-btn-outline">Get In Touch</a>
-    </div>
+  <a href="#experience" style={`display:inline-flex; align-items:center; padding:0.75rem 1.75rem; background-color:${siteConfig.accentColor}; color:white; font-size:0.875rem; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; text-decoration:none; border:2px solid ${siteConfig.accentColor}; border-radius:0.5rem;`}>
+    View Career Journey ↓
+  </a>
+  <a href="#contact" style={`display:inline-flex; align-items:center; padding:0.75rem 1.75rem; background-color:transparent; color:${siteConfig.accentColor}; font-size:0.875rem; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; text-decoration:none; border:2px solid ${siteConfig.accentColor}; border-radius:0.5rem;`}>
+    Get In Touch
+  </a>
+</div>
   </div>
 
 </div>
