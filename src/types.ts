@@ -13,7 +13,7 @@ export type Config = {
     twitter: string;
   };
   aboutMe: string;
-  skills: string[];
+  skills: { category: string; items: string[] }[];
   projects: {
     name: string;
     description: string;
