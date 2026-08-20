@@ -20,17 +20,17 @@ export const siteConfig: Config = {
   },
   aboutMe: "10+ years engineering quality into SaaS platforms that scale to 100 million users globally. From multi-tenant B2B enterprise to mobile, desktop, and web platforms across startup, acquisition, and global scale — I build the frameworks, own the strategy, and lead the teams that ship with confidence.",
   skills: [
-    { category: "Test Automation Frameworks", items: ["Playwright", "REST Assured"] },
+    { category: "Test Automation Frameworks", items: ["Playwright", "REST Assured", "Selenium"] },
   { category: "CI/CD", items: ["Jenkins", "Docker", "Git", "GitHub Actions"] },
   { category: "Programming", items: ["Java", "Python", "JavaScript"] },
-  { category: "API Testing", items: ["REST API", "Postman"] },
-  { category: "Database", items: ["SQL", "MongoDB"] },
+  { category: "API Testing & Database", items: ["REST API", "Postman", "SQL", "MongoDB"] },
   { category: "Testing Strategy", items: ["Integration Testing", "Risk-Based Testing", "Shift-Left Testing"] },
-  { category: "Tools", items: ["Jira", "TestRail", "Allure", "BrowserStack", "Confluence"] },
-  { category: "Process & Program Management", items: ["Agile", "Scrum", "SDLC", "Sprint Planning", "Release & Risk Management", "Roadmap Execution"] },
   { category: "AI & Quality Engineering", items: ["Claude", "Cursor", "Playwright MCP", "AI-Assisted Test Generation", "Prompt Engineering", "LLM Quality Evaluation", "TestRigor", "AI Workflow Automation"] },
+  { category: "Process & Program Management", items: ["Agile", "Scrum", "SDLC", "Sprint Planning", "Release & Risk Management", "Roadmap Execution"] },
   { category: "Leadership", items: ["Team Leadership & Mentoring", "Stakeholder Communication", "Cross-Team Collaboration", "Program Delivery", "OKR Alignment", "Vendor & Partner Management"] },
+  { category: "Tools", items: ["Jira", "TestRail", "Allure", "BrowserStack", "Confluence"] },
   ],
+  
   projects: [
     {
       name: "Playwright Java Automation Framework",
