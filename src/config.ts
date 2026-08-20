@@ -28,7 +28,7 @@ export const siteConfig: Config = {
   { category: "Testing Strategy", items: ["Integration Testing", "Risk-Based Testing", "Shift-Left Testing"] },
   { category: "Tools", items: ["Jira", "TestRail", "Allure", "BrowserStack", "Confluence"] },
   { category: "Process & Program Management", items: ["Agile", "Scrum", "SDLC", "Sprint Planning", "Release & Risk Management", "Roadmap Execution"] },
-  { category: "AI", items: ["Cursor", "Claude"] },
+  { category: "AI & Quality Engineering", items: ["Claude", "Cursor", "Playwright MCP", "AI-Assisted Test Generation", "Prompt Engineering", "LLM Quality Evaluation", "TestRigor", "AI Workflow Automation"] },
   { category: "Leadership", items: ["Team Leadership & Mentoring", "Stakeholder Communication", "Cross-Team Collaboration", "Program Delivery", "OKR Alignment", "Vendor & Partner Management"] },
   ],
   projects: [
