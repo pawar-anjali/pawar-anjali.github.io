@@ -136,5 +136,11 @@ export const siteConfig: Config = {
         "AI fundamentals certification covering LLM frameworks and practical AI application.",
       ],
     },
+    {
+  degree: "AWS for Beginners",
+  school: "Amazon Web Services",
+  dateRange: "Aug 2026",
+  achievements: ["Foundational AWS cloud concepts and core services."],
+},
   ],
 };
