@@ -51,12 +51,14 @@ import { siteConfig } from "../config";
 
       <div class="flex-shrink-0 flex justify-center md:justify-end animate-fade-in animation-delay-400">
        
-        <img
-  src="/P7409421-HR.jpg"
-  alt={siteConfig.name}
-  class="relative w-64 sm:w-72 md:w-80 lg:w-96 object-cover object-center shadow-2xl rounded-lg"
-  style={`border-top: 4px solid ${siteConfig.accentColor}; height: auto;`}
-/>
+        <div class="p-4 rounded-xl" style={`background-color: var(--cream); border-top: 4px solid ${siteConfig.accentColor};`}>
+  <img
+    src="/P7409421-HR.jpg"
+    alt={siteConfig.name}
+    class="w-64 sm:w-72 md:w-80 lg:w-96 object-cover object-center shadow-lg rounded-lg"
+    style="height: auto;"
+  />
+</div>
         </div>
       </div>
 
