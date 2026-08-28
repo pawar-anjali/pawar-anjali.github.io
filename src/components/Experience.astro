@@ -4,8 +4,9 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 ---
 {hasExperience && (
   <section id="experience" class="px-8 py-16 sm:px-12 sm:py-20 md:px-24 md:py-24">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">Experience</h2>
-    <div class="w-16 h-1 rounded-full mb-10" style={`background-color: ${siteConfig.accentColor}`}></div>
+   <p class="text-xs font-medium tracking-widest uppercase mb-6" style={`color: ${siteConfig.accentColor}`}>Career Journey</p>
+<h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">A decade of impact.</h2>
+<h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-10">From quality to strategy.</h2>
     <div class="relative">
       {siteConfig.experience.map((exp, index) => (
         <div class="relative mb-12 last:mb-0">
