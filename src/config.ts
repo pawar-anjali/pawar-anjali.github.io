@@ -18,7 +18,17 @@ export const siteConfig: Config = {
     github: "https://github.com/pawar-anjali",
     twitter: "",
   },
-  aboutMe: "10+ years engineering quality into SaaS platforms that scale to 100 million users globally — across startup, acquisition, and enterprise scale.",
+  aboutMe: `10+ years engineering quality into SaaS platforms that scale to 100 million users globally — across startup, acquisition, and enterprise scale.
+
+Started as a tester because I was curious about why software breaks. Stayed because I realised fixing the process was more interesting than fixing the bug.
+
+Over a decade, the work kept expanding — and so did the scope of what "QA" actually meant in practice. It was never just writing test cases. Every sprint, I was in planning sessions translating business requirements into test coverage decisions. Every release, I was the one coordinating across Product, Engineering, and DevOps to define what "ready to ship" actually meant. Every quarter, I was building documentation, onboarding playbooks, and team processes that outlasted any single test suite.
+
+That's when I realised: I wasn't just a QA engineer. I was managing programs.
+
+The skills came naturally from the work. Backlog management — because someone had to own the test debt and prioritise what got automated first. Stakeholder communication — because QA sits at the intersection of every team and someone had to translate between engineering reality and business expectations. Risk management — because every release is a risk decision, and I was the one making the case for what we could and couldn't ship. Team leadership — because scaling a QA function from one person to twelve means hiring, mentoring, and building a culture of quality, not just a suite of tests.
+
+Now building at the intersection of AI and quality engineering — using Claude, Cursor and Playwright MCP, and AI-assisted workflows to explore what autonomous testing looks like when intelligence is part of the stack.`,
   skills: [
     { category: "Test Automation Frameworks", items: ["Playwright", "REST Assured", "Selenium"] },
   { category: "CI/CD", items: ["Jenkins", "Docker", "Git", "GitHub Actions"] },
