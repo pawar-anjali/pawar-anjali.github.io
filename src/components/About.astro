@@ -13,9 +13,11 @@ import { siteConfig } from "../config";
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">Engineer at the core.</h2>
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-10">Builder of teams that ship.</h2>
 
-      <p class="text-gray-600 leading-relaxed mb-6" style="font-size: 0.95rem; line-height: 1.8;">
-        {siteConfig.aboutMe}
-      </p>
+      {siteConfig.aboutMe.split("\n\n").map((para) => (
+  <p class="text-gray-600 mb-5" style="font-size: 0.95rem; line-height: 1.8;">
+    {para}
+  </p>
+))}
     </div>
 
     <!-- Right: Core Expertise -->
