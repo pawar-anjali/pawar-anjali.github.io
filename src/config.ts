@@ -56,7 +56,7 @@ Now building at the intersection of AI and quality engineering — using Claude,
     },
     {
       name: "AI-Powered QA Agent with Playwright MCP",
-      description: "Work in progress - building an AI-driven testing workflow using Playwright MCP and Claude to autonomously generate, execute, and evaluate test scenarios for web applications. Targeting self-healing locators and natural language test generation.",
+      description: "Building an AI-driven testing workflow using Playwright MCP and Claude to autonomously generate, execute, and evaluate test scenarios for web applications. Exploring self-healing locators, natural language test generation, and autonomous QA agents that reduce manual intervention in the testing lifecycle.",
       skills: ["Playwright MCP", "Claude AI", "AI Testing", "Java"],
       link: "https://github.com/pawar-anjali",
     },
