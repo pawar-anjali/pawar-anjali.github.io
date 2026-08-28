@@ -20,7 +20,12 @@ import { siteConfig } from "../config";
     <!-- Right: Contact boxes -->
     <div class="flex flex-col gap-4 flex-1">
       <a href={`mailto:${siteConfig.social.email}`} class="contact-card">
-        <span class="contact-icon" style={`color: ${siteConfig.accentColor}`}>✉</span>
+        <span class="contact-icon" style={`color: ${siteConfig.accentColor}`}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
+    <path d="M3 7l9 6 9-6"/>
+  </svg>
+</span>
         <div>
           <p class="text-gray-900 font-medium">{siteConfig.social.email}</p>
           <p class="text-gray-400 text-sm">Email</p>
