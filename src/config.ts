@@ -2,7 +2,7 @@ import type { Config } from "./types";
 
 export const siteConfig: Config = {
   name: "Anjali Pawar",
-  title: "Lead QA Engineer | AI Quality & Test Automation | Playwright Expert",
+  title: "QA Lead | AI Quality & Test Automation | Playwright Expert",
   description: "Portfolio of Anjali Pawar - Lead QA Engineer specialising in Playwright automation, AI-assisted testing, and scalable QA frameworks.",
   accentColor: "#b8913a",
   tagline: "QA Strategy · Test Automation · AI Testing · Playwright",
