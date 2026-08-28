@@ -2,18 +2,8 @@
 import { siteConfig } from "../config";
 ---
 
-<footer class="border-t border-gray-200 py-5 px-8 md:px-16 bg-white">
-  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-gray-500">
-    <p>© {new Date().getFullYear()} {siteConfig.name}</p>
-    <nav class="flex flex-wrap gap-x-2 items-center">
-      <a href="#about" class="hover:text-gray-800 transition-colors">About</a>
-      <span>·</span>
-      <a href="#projects" class="hover:text-gray-800 transition-colors">Projects</a>
-      <span>·</span>
-      <a href="#experience" class="hover:text-gray-800 transition-colors">Experience</a>
-      <span>·</span>
-      <a href="#education" class="hover:text-gray-800 transition-colors">Education</a>
-    </nav>
-    <p>Pune, India</p>
-  </div>
+<footer class="border-t border-gray-200 py-5 px-8 bg-white">
+  <p class="text-center text-sm text-gray-500">
+    © {new Date().getFullYear()} {siteConfig.name}. Built with intent.
+  </p>
 </footer>
