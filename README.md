@@ -1,6 +1,6 @@
 # anjalipawar.com
 
-Personal portfolio of Anjali Pawar — Senior SDET, Automation Architect, and AI Quality Engineer with 11+ years of experience shipping quality at scale.
+Personal portfolio of Anjali Pawar — Senior SDET, Automation Architect, and AI Quality Engineer with 12+ years of experience shipping quality at scale.
 
 Live site: [anjalipawar.com](https://anjalipawar.com)
 
