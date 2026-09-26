@@ -5,6 +5,7 @@ Personal portfolio of Anjali Pawar — Senior SDET, Automation Architect, and AI
 Live site: [anjalipawar.com](https://anjalipawar.com)
 
 ---
+![anjalipawar.com preview](./public/preview.png)
 
 ## About
 
