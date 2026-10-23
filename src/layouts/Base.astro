@@ -18,6 +18,8 @@ const site = "https://anjalipawar.com";
 const url = new URL(Astro.url.pathname, site).href;
 const ogImage = new URL(image, site).href;
 const path = Astro.url.pathname;
+// GoatCounter analytics: set to your GoatCounter code (e.g. "anjalipawar"). Empty = analytics off.
+const goatcounter = "anjalipawar";
 const resumeMail = `mailto:${siteConfig.social.email}?subject=${encodeURIComponent("Résumé request")}&body=${encodeURIComponent("Hi Anjali,\n\nI'd like to request your résumé.\n\nName: \n\nThanks")}`;
 ---
 <html lang="en">
@@ -41,6 +43,7 @@ const resumeMail = `mailto:${siteConfig.social.email}?subject=${encodeURICompone
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    {goatcounter && <script is:inline data-goatcounter={`https://${goatcounter}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>}
   </head>
   <body>
     <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
@@ -53,7 +56,7 @@ const resumeMail = `mailto:${siteConfig.social.email}?subject=${encodeURICompone
           <a href="/#expertise" class="hide-sm">Expertise</a>
           <a href="/#projects" class="hide-sm">Projects</a>
           <a href="/#experience" class="hide-sm">Experience</a>
-          <a href={resumeMail} class="btn btn-dark" style="min-height:44px;padding:0 20px;font-size:15px">Request Résumé</a>
+          <a href={resumeMail} data-goatcounter-click="resume-request-menu" data-goatcounter-title="Request Résumé (top menu)" class="btn btn-dark" style="min-height:44px;padding:0 20px;font-size:15px">Request Résumé</a>
         </nav>
       </div>
     </header>
@@ -64,9 +67,9 @@ const resumeMail = `mailto:${siteConfig.social.email}?subject=${encodeURICompone
       <div class="wrap">
         <span>© {new Date().getFullYear()} {siteConfig.name}</span>
         <span>
-          <a href={siteConfig.social.linkedin}>LinkedIn</a> ·
-          <a href={siteConfig.social.github}>GitHub</a> ·
-          <a href={`mailto:${siteConfig.social.email}`}>Email</a>
+          <a href={siteConfig.social.linkedin} data-goatcounter-click="linkedin-footer">LinkedIn</a> ·
+          <a href={siteConfig.social.github} data-goatcounter-click="github-footer">GitHub</a> ·
+          <a href={`mailto:${siteConfig.social.email}`} data-goatcounter-click="email-footer">Email</a>
         </span>
       </div>
     </footer>
