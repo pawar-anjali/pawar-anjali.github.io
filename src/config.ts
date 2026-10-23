@@ -44,13 +44,13 @@ Now working on both sides of AI quality. Using AI to test better: built an AI-po
     {
       name: "Playwright MCP Test Agent",
       description: "An AI-driven testing workflow using Playwright MCP and Claude to autonomously generate, execute, and evaluate test scenarios for web applications. Exploring self-healing locators, natural language test generation, and autonomous QA agents that reduce manual intervention in the testing lifecycle.",
-      skills: ["Playwright MCP", "Claude AI", "AI Testing", "Python"],
+      skills: ["Playwright MCP", "Cursor", "AI Testing", "Python"],
       link: "https://github.com/pawar-anjali",
     },
     {
       name: "Test Failure Finder",
       description: "When an automation test fails mid-sprint, is it a real regression, a flaky test, the environment or performance? This tool pulls together the Jira ticket, the PR diff, Allure results with run history and the sprint's open bugs, then works out which changed files actually relate to the failure. An LLM turns that evidence into a short report: cause, risk, evidence and what to investigate next. Next up: Promptfoo evals to check the AI's classifications can be trusted.",
-      skills: ["Jira", "PR diff analysis", "Allure", "LLM", "Failure triage"],
+      skills: ["Java", "Cursor", "Jira API", "GitHub API", "Allure", "Playwright"],
       link: "https://github.com/pawar-anjali/test-failure-finder",
     },
     {
@@ -62,7 +62,7 @@ Now working on both sides of AI quality. Using AI to test better: built an AI-po
     {
       name: "AI-Assisted Portfolio Development",
       description: "Built this portfolio site using AI-assisted development, collaborating with Claude by Anthropic to design content architecture, write technical copy, and make platform decisions. Demonstrates practical application of AI tools in a real engineering workflow.",
-      skills: ["Claude AI", "GitHub Pages", "Astro", "Tailwind CSS"],
+      skills: ["Claude AI", "GitHub Actions", "GitHub Pages", "Prompt Engineering"],
       link: "https://github.com/pawar-anjali/pawar-anjali.github.io",
     },
     {
@@ -74,7 +74,7 @@ Now working on both sides of AI quality. Using AI to test better: built an AI-po
     },
     {
       name: "AI Food & Fitness Companion",
-      status: "Planned",
+      status: "In progress",
       description: "One conversational AI web app for meal planning, Indian home-cooked recipes, exercise suggestions and progress tracking, instead of switching between separate apps. Answers grounded in a curated Indian food catalogue and trusted health references, with every recommendation explained. Every AI answer will be graded by an LLM-as-a-Judge for grounding, safety and fit with the user's preferences.",
       skills: ["Conversational AI", "RAG", "Guardrails", "LLM-as-a-Judge"],
       link: "",
