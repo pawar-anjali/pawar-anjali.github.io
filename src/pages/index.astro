@@ -1,42 +1,235 @@
 ---
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
-import Certifications from "../components/Certifications.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
+import Base from "../layouts/Base.astro";
 import { siteConfig } from "../config";
-import "../styles/global.css";
+import { getPosts, fmtDate, pad } from "../lib";
+
+const posts = getPosts().slice(0, 3);
+const aboutParas = siteConfig.aboutMe.split("\n\n");
+const resumeMail = `mailto:${siteConfig.social.email}?subject=${encodeURIComponent("Résumé request")}&body=${encodeURIComponent("Hi Anjali,\n\nI'd like to request your résumé.\n\nName: \n\nThanks")}`;
+const icons: Record<string, string> = {
+  "Test Automation Frameworks": "M4 4h16v16H4z M9 8l6 4-6 4z",
+  "CI/CD": "M4 12a8 8 0 0 1 14-5.3 M20 4v4h-4 M20 12a8 8 0 0 1-14 5.3 M4 20v-4h4",
+  "Programming & CI/CD": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M13.5 5l-3 14",
+  "API Testing & Database": "M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6 M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3",
+  "Test Strategy & Management": "M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 1 0 0-9z M12 11.5v1",
+  "AI & Quality Engineering": "M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z",
+  "Process & Program Management": "M4 5h4v14H4z M10 5h4v9h-4z M16 5h4v6h-4z",
+  "Leadership": "M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 1 0 0 7z M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5 M16 4.5a3.5 3.5 0 0 1 0 6.5 M18 14.8c2 .8 3.2 2.6 3.5 5.2",
+  "Tools": "M14.5 6.5a4 4 0 0 0 5 5l-9 9a2.1 2.1 0 0 1-3-3l9-9a4 4 0 0 0-2-2z M4 4l3 3",
+  default: "M5 12h14 M12 5v14",
+};
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={siteConfig.description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <title>{siteConfig.name} - {siteConfig.title}</title>
-  </head>
-  <body>
-    <Header />
-    <section>
-      <Hero />
-      <About />
-      <Projects />
-      <Experience />
-      <Education />
-      <Certifications />
-      <Contact />
-    </section>
-    <Footer />
-  </body>
-</html>
+<Base>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">QA Automation Lead · Agentic AI quality</p>
+        <h1 class="serif h-xl">AI makes shipping fast. Quality makes it <em>worth it.</em></h1>
+        <p style="margin:28px 0 10px;font-size:20px;max-width:600px;font-weight:600">{siteConfig.title}</p>
+        <p style="margin:0 0 36px;font-size:20px;max-width:600px" class="muted">
+          Helping engineering teams own quality: QA leadership, agentic QA and test automation infrastructure, so they ship fast and still trust every release.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="/blog/" class="btn btn-primary">Read the blog →</a>
+          <a href="#contact" class="btn btn-ghost">Work with me</a>
+        </div>
+      </div>
+      <figure class="portrait" style="max-width:420px;justify-self:center;width:100%">
+        <img src="/P7409421-HR.jpg" alt="Portrait of Anjali Pawar" width="420" height="525" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- Proof -->
+  <div class="wrap">
+    <div class="proof">
+      <div><b>12+ yrs</b><span>building quality</span></div>
+      <div><b>95%</b><span>test coverage built</span></div>
+      <div><b>5d → 10h</b><span>regression cycle after automation</span></div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="wrap split">
+      <p class="eyebrow">01 · About</p>
+      <div>
+        <h2 class="serif h-lg" style="margin-bottom:28px">Quality by instinct. Engineer at the core. <em>Builder of teams that ship.</em></h2>
+        <div class="prose" style="max-width:720px">
+          {aboutParas.slice(0, 4).map((p) => <p>{p}</p>)}
+          <div id="about-text" class="about-more">
+            {aboutParas.slice(4).map((p) => <p>{p}</p>)}
+          </div>
+        </div>
+        <button type="button" id="about-toggle" class="about-toggle" aria-expanded="false" aria-controls="about-text">
+          <span>Read more</span> <span aria-hidden="true" class="about-arrow">↓</span>
+        </button>
+        <script>
+          const btn = document.getElementById("about-toggle");
+          const box = document.getElementById("about-text");
+          btn?.addEventListener("click", () => {
+            const open = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", String(!open));
+            box?.classList.toggle("is-open", !open);
+            const label = btn.querySelector("span");
+            if (label) label.textContent = open ? "Read more" : "Read less";
+            if (open) document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="section" style="padding-top:0">
+    <div class="wrap split">
+      <p class="eyebrow">02 · Blog</p>
+      <div>
+        <h2 class="serif h-lg" style="margin-bottom:36px">Short essays on how quality <em>keeps up with AI.</em></h2>
+        {posts.map((post) => (
+          <a href={post.url} class="note">
+            <div>
+              <p class="note-meta">Nº {pad(post.number)} · {fmtDate(post.date)} · {post.topic}</p>
+              <h3 class="serif h-md">{post.title}</h3>
+              <p class="muted" style="margin:14px 0 0;max-width:620px">{post.description}</p>
+            </div>
+            {post.image && <img src={post.image} alt="" loading="lazy" />}
+          </a>
+        ))}
+        <p style="margin:0;padding-top:24px;border-top:1px solid var(--rule)" class="muted">
+          <a href="/blog/" style="color:var(--teal);font-weight:600">All posts →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core expertise -->
+  <section id="expertise" class="section dark">
+    <div class="wrap">
+      <div class="xp-head">
+        <div>
+          <p class="eyebrow">03 · Expertise</p>
+          <h2 class="serif h-lg" style="max-width:760px">The toolkit behind <em>quality that ships.</em></h2>
+          <p class="muted" style="margin:22px 0 0;font-size:18px;max-width:560px">From test automation and CI/CD to AI evaluation and QA leadership, the tools and practices behind quality delivery.</p>
+        </div>
+        <div class="xp-art" aria-hidden="true">
+          <div class="xp-tiles">
+            {Array.from({ length: 30 }).map((_, i) => <i class={[3, 8, 13, 19, 24].includes(i) ? "gap" : ""}></i>)}
+          </div>
+          <span class="xp-dot"></span>
+        </div>
+      </div>
+      <div class="xp-grid">
+        {siteConfig.skills.map((g, i) => (
+          <div class={`xp-card${g.category.startsWith("AI") ? " xp-feature" : ""}${g.category.startsWith("Test Strategy") ? " xp-span2" : ""}${g.category === "Tools" ? " xp-tabwide" : ""}`}>
+            <div class="xp-top">
+              <span class="xp-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={icons[g.category] ?? icons.default} /></svg>
+              </span>
+              <span class="xp-num">{String(i + 1).padStart(2, "0")}</span>
+            </div>
+            <h3 class="serif" style="font-size:26px;margin:18px 0 6px">{g.category}</h3>
+            {g.category.startsWith("AI") && <p class="xp-tag">Current focus</p>}
+            <ul class="xp-chips">
+              {g.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected work -->
+  <section id="projects" class="section">
+    <div class="wrap">
+      <p class="eyebrow">04 · Projects</p>
+      <h2 class="serif h-lg" style="margin-bottom:44px">Built to <em>demonstrate.</em></h2>
+      <div class="grid2">
+        {siteConfig.projects.map((p, i) => {
+          const Tag = p.link ? "a" : "div";
+          const linkProps = p.link ? { href: p.link, target: "_blank", rel: "noopener noreferrer" } : {};
+          return (
+            <Tag {...linkProps} class="card" style="display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                <span class="num" style="color:var(--teal);margin:0">{pad(i + 1)}</span>
+                {p.status && <span class="status-tag">{p.status}</span>}
+              </div>
+              <h3 class="serif" style="font-size:30px;margin:14px 0">{p.name}</h3>
+              <p class="muted" style="margin:0;font-size:16px;flex:1">{p.description}</p>
+              <div class="chips">{p.skills.map((s) => <span class="chip">{s}</span>)}</div>
+              {p.link && <span style="margin-top:22px;font-weight:600;color:var(--teal)">View on GitHub ↗</span>}
+            </Tag>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="exp-head">
+        <div>
+          <p class="eyebrow">05 · Experience</p>
+          <h2 class="serif h-lg">12 years of quality, <em>from first test to founding QA.</em></h2>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px">
+          <a href={resumeMail} class="btn btn-dark">Request Résumé →</a>
+          <span class="muted" style="font-size:13px">Sent personally, usually within a day.</span>
+        </div>
+      </div>
+      {siteConfig.experience.map((job: any) => (
+        <div class="job">
+          <div>
+            <p class="muted" style="font-size:14px">{job.dateRange}</p>
+            <h3 class="serif" style="font-size:28px;margin-top:6px">{job.title}</h3>
+            <p class="muted" style="font-size:14px;margin-top:4px">{job.company}</p>
+          </div>
+          <div>
+            <p style="font-size:17px">{job.summary}</p>
+            {job.highlights && (
+              <ul class="exp-highlights">
+                {job.highlights.map((h: string) => <li>{h}</li>)}
+              </ul>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section id="credentials" class="section rule-top">
+    <div class="wrap">
+      <p class="eyebrow">06 · Credentials</p>
+      <h2 class="serif h-lg" style="margin-bottom:40px">Certified, <em>from test to AI.</em></h2>
+      <div style="display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        {siteConfig.certifications.map((c) => (
+          <div class="card" style="padding:26px">
+            <p class="muted" style="margin:0 0 12px;font-size:14px">{c.school} · {c.dateRange}</p>
+            <h3 class="serif" style="margin:0;font-size:24px;font-weight:400;line-height:1.2">{c.degree}</h3>
+          </div>
+        ))}
+      </div>
+      {siteConfig.education.map((e) => (
+        <p class="muted" style="margin:28px 0 0;font-size:15px">{e.degree} · {e.school} · {e.dateRange}</p>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section dark">
+    <div class="wrap">
+      <p class="eyebrow">07 · Contact</p>
+      <h2 class="serif h-xl" style="max-width:980px;margin-bottom:28px">Quality that keeps up with AI. <em>Let's build it.</em></h2>
+      <p class="muted" style="font-size:19px;margin:0 0 32px;max-width:620px">Hiring for QA leadership, test automation or AI quality? Open to global and remote roles.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href={`mailto:${siteConfig.social.email}`} class="btn btn-primary">Email</a>
+        <a href={resumeMail} class="btn btn-ghost-light">Request Résumé</a>
+        <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-light">LinkedIn ↗</a>
+        <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-light">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+</Base>

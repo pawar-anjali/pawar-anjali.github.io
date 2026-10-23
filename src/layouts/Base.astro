@@ -1,0 +1,72 @@
+---
+import "../styles/global.css";
+import { siteConfig } from "../config";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+const {
+  title = `${siteConfig.name} | QA Automation Lead · AI Quality`,
+  description = "Blog on testing, QA leadership and AI quality by Anjali Pawar, QA Automation Lead.",
+  image = "/P7409421-HR.jpg",
+  type = "website",
+} = Astro.props;
+const site = "https://anjalipawar.com";
+const url = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL(image, site).href;
+const path = Astro.url.pathname;
+const resumeMail = `mailto:${siteConfig.social.email}?subject=${encodeURIComponent("Résumé request")}&body=${encodeURIComponent("Hi Anjali,\n\nI'd like to request your résumé.\n\nName: \n\nThanks")}`;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F4F0E8" />
+    <link rel="canonical" href={url} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+    <header class="nav">
+      <div class="wrap nav-in">
+        <a href="/" class="serif" style="font-size:28px">Anjali Pawar</a>
+        <nav class="nav-links" aria-label="Main">
+          <a href="/#about" class="hide-sm">About</a>
+          <a href="/blog/" aria-current={path.startsWith("/blog") ? "page" : undefined}>Blog</a>
+          <a href="/#expertise" class="hide-sm">Expertise</a>
+          <a href="/#projects" class="hide-sm">Projects</a>
+          <a href="/#experience" class="hide-sm">Experience</a>
+          <a href={resumeMail} class="btn btn-dark" style="min-height:44px;padding:0 20px;font-size:15px">Request Résumé</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <span>© {new Date().getFullYear()} {siteConfig.name}</span>
+        <span>
+          <a href={siteConfig.social.linkedin}>LinkedIn</a> ·
+          <a href={siteConfig.social.github}>GitHub</a> ·
+          <a href={`mailto:${siteConfig.social.email}`}>Email</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

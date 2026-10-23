@@ -1,0 +1,32 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getPosts, fmtDate, pad } from "../../lib";
+const posts = getPosts();
+---
+<Base title="Blog | Anjali Pawar" description="Short essays on testing, QA leadership and quality in the AI era.">
+  <section class="section" style="padding-bottom:48px">
+    <div class="wrap">
+      <p class="eyebrow">Blog</p>
+      <h1 class="serif h-xl" style="max-width:1000px">Short essays on quality <em>in the AI era.</em></h1>
+      <p class="muted" style="font-size:20px;margin:28px 0 0;max-width:620px">Testing, QA leadership and AI quality.</p>
+    </div>
+  </section>
+  <section style="padding-bottom:120px">
+    <div class="wrap">
+      {posts.map((post) => (
+        <a href={post.url} class="note">
+          <div>
+            <p class="note-meta">Nº {pad(post.number)} · {fmtDate(post.date)} · {post.topic} · {post.readMinutes} min read</p>
+            <h2 class="serif h-md">{post.title}</h2>
+            <p class="muted" style="margin:14px 0 18px;max-width:640px">{post.description}</p>
+            <span style="font-weight:600;color:var(--teal)">Read the note →</span>
+          </div>
+          {post.image && <img src={post.image} alt="" />}
+        </a>
+      ))}
+      <p class="muted" style="margin:0;padding-top:24px;border-top:1px solid var(--rule)">
+        More notes on the way. <a href="https://www.linkedin.com/in/pawaranjali" style="color:var(--teal);font-weight:600">Follow on LinkedIn →</a>
+      </p>
+    </div>
+  </section>
+</Base>

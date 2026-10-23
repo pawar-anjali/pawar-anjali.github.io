@@ -5,6 +5,7 @@ export type Config = {
   accentColor: string;
   tagline: string;
   heroQuote: string;
+  resume?: string;
   stats: { value: string; label: string }[];
   social: {
     email: string;
@@ -19,11 +20,14 @@ export type Config = {
     description: string;
     skills: string[];
     link: string;
+    status?: string;
   }[];
   experience: {
     title: string;
     company: string;
     dateRange: string;
+    summary?: string;
+    highlights?: string[];
     bullets: string[];
   }[];
   education: {

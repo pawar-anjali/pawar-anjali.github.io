@@ -2,7 +2,7 @@ import type { Config } from "./types";
 
 export const siteConfig: Config = {
   name: "Anjali Pawar",
-  title: "QA Lead | AI Quality & Test Automation | Playwright Expert",
+  title: "AI Quality & QA Automation Lead | Playwright Expert",
   description: "Portfolio of Anjali Pawar - Lead QA Engineer specialising in Playwright automation, AI-assisted testing, and scalable QA frameworks.",
   accentColor: "#b8913a",
   tagline: "QA Strategy · Test Automation · AI Testing · Playwright",
@@ -12,13 +12,14 @@ export const siteConfig: Config = {
     { value: "100M+", label: "Users served globally" },
     { value: "85%", label: "Test coverage achieved" },
   ],
+  resume: "",
   social: {
     email: "mail.anjalipawar@gmail.com",
     linkedin: "https://www.linkedin.com/in/pawaranjali",
     github: "https://github.com/pawar-anjali",
     twitter: "",
   },
-  aboutMe: `10+ years engineering quality into SaaS platforms that scale to 100 million users globally — across startup, acquisition, and enterprise scale.
+  aboutMe: `12+ years engineering quality into SaaS platforms that scale to 100 million users globally — across startup, acquisition, and enterprise scale.
 
 Started as a tester because I was curious about why software breaks. Stayed because I realised fixing the process was more interesting than fixing the bug.
 
@@ -28,20 +29,30 @@ That's when I realised: I wasn't just a QA engineer. I was managing programs.
 
 The skills came naturally from the work. Backlog management — because someone had to own the test debt and prioritise what got automated first. Stakeholder communication — because QA sits at the intersection of every team and someone had to translate between engineering reality and business expectations. Risk management — because every release is a risk decision, and I was the one making the case for what we could and couldn't ship. Team leadership — because scaling a QA function from one person to twelve means hiring, mentoring, and building a culture of quality, not just a suite of tests.
 
-Now building at the intersection of AI and quality engineering — using Claude, Cursor and Playwright MCP, and AI-assisted workflows to explore what autonomous testing looks like when intelligence is part of the stack.`,
+Now working on both sides of AI quality. Using AI to test better: built an AI-powered QA agent on Playwright MCP, and a test failure finder that tells real regressions apart from automation, environment and performance issues. Testing AI itself: building a RAG application evaluated with DeepEval and Promptfoo.`,
   skills: [
     { category: "Test Automation Frameworks", items: ["Playwright", "REST Assured", "Selenium"] },
-  { category: "CI/CD", items: ["Jenkins", "Docker", "Git", "GitHub Actions"] },
-  { category: "Programming", items: ["Java", "Python", "JavaScript"] },
-  { category: "API Testing & Database", items: ["REST API", "Postman", "SQL", "MongoDB"] },
-  { category: "Testing Strategy", items: ["Integration Testing", "Risk-Based Testing", "Shift-Left Testing"] },
-  { category: "AI & Quality Engineering", items: ["Claude", "Cursor", "Playwright MCP", "AI-Assisted Test Generation", "Prompt Engineering", "LLM Quality Evaluation", "TestRigor", "AI Workflow Automation"] },
-  { category: "Process & Program Management", items: ["Agile", "Scrum", "SDLC", "Sprint Planning", "Release & Risk Management", "Roadmap Execution"] },
-  { category: "Leadership", items: ["Team Leadership & Mentoring", "Stakeholder Communication", "Cross-Team Collaboration", "Program Delivery", "OKR Alignment", "Vendor & Partner Management"] },
-  { category: "Tools", items: ["Jira", "TestRail", "Allure", "BrowserStack", "Confluence"] },
+    { category: "Programming & CI/CD", items: ["Java", "Python", "JavaScript", "Jenkins", "Docker", "Git", "GitHub Actions"] },
+    { category: "API Testing & Database", items: ["REST API", "Postman", "Swagger", "SQL", "MongoDB"] },
+    { category: "AI & Quality Engineering", items: ["Claude", "Cursor", "GitHub Copilot", "Playwright MCP", "AI-Assisted Testing", "Prompt Engineering", "LLM Quality Evaluation", "DeepEval", "Promptfoo", "Non-Deterministic Testing (LLM-based systems)", "TestRigor", "AI Workflow Automation"] },
+    { category: "Leadership", items: ["Team Leadership & Mentoring", "Stakeholder Communication", "Cross-Team Collaboration", "Program Delivery", "OKR Alignment"] },
+    { category: "Test Strategy & Management", items: ["Risk-Based Testing", "Shift-Left Testing", "Quality Gates", "Agile", "Scrum", "SDLC", "Sprint Planning", "Release & Risk Management", "Go/No-Go Decisions", "Roadmap Execution"] },
+    { category: "Tools", items: ["Jira", "TestRail", "Allure", "BrowserStack", "Confluence", "Bugsnag", "Grafana", "Kibana", "New Relic"] },
   ],
   
   projects: [
+    {
+      name: "Playwright MCP Test Agent",
+      description: "An AI-driven testing workflow using Playwright MCP and Claude to autonomously generate, execute, and evaluate test scenarios for web applications. Exploring self-healing locators, natural language test generation, and autonomous QA agents that reduce manual intervention in the testing lifecycle.",
+      skills: ["Playwright MCP", "Claude AI", "AI Testing", "Python"],
+      link: "https://github.com/pawar-anjali",
+    },
+    {
+      name: "Test Failure Finder",
+      description: "When an automation test fails mid-sprint, is it a real regression, a flaky test, the environment or performance? This tool pulls together the Jira ticket, the PR diff, Allure results with run history and the sprint's open bugs, then works out which changed files actually relate to the failure. An LLM turns that evidence into a short report: cause, risk, evidence and what to investigate next. Next up: Promptfoo evals to check the AI's classifications can be trusted.",
+      skills: ["Jira", "PR diff analysis", "Allure", "LLM", "Failure triage"],
+      link: "https://github.com/pawar-anjali/test-failure-finder",
+    },
     {
       name: "Playwright Java Automation Framework",
       description: "End-to-end UI automation framework built with Playwright and Java targeting a live web application. Implements Page Object Model for maintainability, Allure Reports for rich test reporting, and Jenkins CI/CD pipeline for automated execution on every build.",
@@ -55,35 +66,51 @@ Now building at the intersection of AI and quality engineering — using Claude,
       link: "https://github.com/pawar-anjali/pawar-anjali.github.io",
     },
     {
-      name: "AI-Powered QA Agent with Playwright MCP",
-      description: "Building an AI-driven testing workflow using Playwright MCP and Claude to autonomously generate, execute, and evaluate test scenarios for web applications. Exploring self-healing locators, natural language test generation, and autonomous QA agents that reduce manual intervention in the testing lifecycle.",
-      skills: ["Playwright MCP", "Claude AI", "AI Testing", "Java"],
-      link: "https://github.com/pawar-anjali",
+      name: "RAG Policy Assistant",
+      status: "In progress",
+      description: "A RAG assistant that answers questions about product requirements and policies, grounded in the source documents. Built to be tested: a DeepEval and Promptfoo suite will check answer faithfulness, retrieval quality, hallucinations and regressions whenever the prompt or model changes.",
+      skills: ["RAG", "DeepEval", "Promptfoo", "LLM Evaluation", "Python"],
+      link: "",
+    },
+    {
+      name: "AI Food & Fitness Companion",
+      status: "Planned",
+      description: "One conversational AI web app for meal planning, Indian home-cooked recipes, exercise suggestions and progress tracking, instead of switching between separate apps. Answers grounded in a curated Indian food catalogue and trusted health references, with every recommendation explained. Every AI answer will be graded by an LLM-as-a-Judge for grounding, safety and fit with the user's preferences.",
+      skills: ["Conversational AI", "RAG", "Guardrails", "LLM-as-a-Judge"],
+      link: "",
     },
   ],
   experience: [
     {
+      title: "Founding QA",
+      company: "Stealth startup",
+      dateRange: "Jan 2026 - Present",
+      summary: "Owns quality end to end as the first QA hire, from requirements to deployment. Built the test automation framework from the ground up and set the test strategy for AI features, including evaluating non-deterministic LLM output. Works directly with founders, Product and Engineering, and makes the release calls.",
+      highlights: ["AI quality testing", "Framework built from scratch", "Requirements → deployment"],
+      bullets: [],
+    },
+    {
       title: "Lead QA Specialist",
-      company: "Cornerstone OnDemand Enterprise Pvt. Ltd., Mumbai, India",
+      company: "Cornerstone OnDemand",
       dateRange: "Nov 2023 - Nov 2025",
-      description: "Took ownership of a QA function running entirely on manual testing — regression cycles consumed 5 days per release, no automation existed, and post-release bugs were reaching production regularly. Defined and drove the end-to-end QA transformation roadmap, aligning stakeholders across Product, Engineering, and Release teams on a phased automation strategy. Actively participated in sprint planning and backlog management, translating technical requirements into detailed test documentation. Led the full migration to automated testing using Playwright, architecting the framework from scratch with Page Object Model and integrating it into Jenkins CI/CD pipelines — ensuring automated suites ran on every production deployment and eliminating manual release validation entirely. Scaled and mentored a 12-member QA team through structured documentation, onboarding guides, and best practices, reducing ramp-up time by 60%. Owned cross-functional QA strategy across every sprint cycle — taking test coverage to 85%, compressing regression from 5 days to 10 hours, and reducing post-release bugs by 40%.",
-      skills: ["Playwright", "Rest Assured", "Git", "Jenkins", "CI/CD", "Page Object Model", "Reporting", "Agile", "Sprint Planning", "Stakeholder Management", "QA Strategy", "Team Leadership", "Defect Management"],
+      summary: "Led a 12-member QA team and owned QA strategy across every sprint, partnering with Product, DevOps and leadership on what \"ready to ship\" meant. Set the team's technical direction and OKRs, and took a manual-only QA function to full Playwright automation wired into CI/CD.",
+      highlights: ["85% test coverage", "Regression 5 days → 10 hours", "40% fewer post-release bugs"],
       bullets: [],
     },
     {
       title: "Senior QA Engineer",
-      company: "EdCast Asia Private Ltd., Mumbai, India",
+      company: "EdCast",
       dateRange: "Jun 2016 - Oct 2023",
-      description: "Built test coverage across a fast-moving SaaS product serving enterprise clients globally. Designed and executed 200+ test scenarios in TestRail across every sprint cycle, collaborating closely with Product and Engineering on requirement analysis and shift-left testing practices. Built a reusable REST Assured framework from scratch with 100+ test cases covering all critical API endpoints, reducing API testing time by 50%. Developed 300+ automated test scripts using Playwright and Java, resolving 200+ flaky test failures and improving suite reliability from 65% to 90% — directly improving release confidence and reducing rollback risk. Mentored 3 junior QA engineers on automation best practices and requirement analysis, increasing team productivity by 25% and building a self-sufficient QA capability within the team.",
-      skills: ["Playwright", "SDLC", "REST Assured", "TestRail", "Postman", "API Testing", "TestNG", "Agile", "Mentoring", "Shift-Left Testing", "SQL"],
+      summary: "Built UI and API automation for an enterprise SaaS product used globally: a reusable REST Assured framework and 300+ Playwright scripts. Fixed 200+ flaky failures to make the suite trustworthy, and mentored 3 junior engineers.",
+      highlights: ["300+ Playwright scripts", "Suite reliability 65% → 90%", "API testing time cut 50%"],
       bullets: [],
     },
     {
       title: "QA Engineer",
-      company: "WAGmob Private Ltd., Indore, India",
+      company: "WAGmob",
       dateRange: "May 2014 - May 2016",
-      description: "Built test coverage across mobile, desktop, and web from the ground up. Designed and executed 500+ manual test cases across desktop applications, establishing requirement traceability and ensuring development sign-off was backed by documented evidence. Collaborated closely with development teams on defect triage, resolving 95% of high-priority issues within the same sprint cycle — maintaining release velocity without compromising quality. Executed functional, exploratory, and UAT testing across Android, iOS, and web, catching 25+ UI defects and preventing leakage from UAT to production. Validated cross-browser compatibility across Chrome, Firefox, Safari, and Edge, ensuring consistent experience across the full user base.",
-      skills: ["Integration Testing", "Functional Testing", "Exploratory Testing", "UAT", "Android", "iOS", "Cross-Browser Testing", "Defect Triage", "JIRA", "Requirement Traceability"],
+      summary: "Built test coverage across mobile, desktop and web from the ground up, with requirement traceability backing every sign-off. Worked closely with developers on defect triage to keep releases moving.",
+      highlights: ["500+ test cases", "Android, iOS and web", "95% of high-priority bugs fixed in-sprint"],
       bullets: [],
     },
   ],
