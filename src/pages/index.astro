@@ -147,7 +147,7 @@ const icons: Record<string, string> = {
       <div class="grid2">
         {siteConfig.projects.map((p, i) => {
           const Tag = p.link ? "a" : "div";
-          const linkProps = p.link ? { href: p.link, target: "_blank", rel: "noopener noreferrer" } : {};
+          const linkProps = p.link ? { href: p.link, target: "_blank", rel: "noopener noreferrer", "data-goatcounter-click": "project-" + p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""), "data-goatcounter-title": "Project: " + p.name } : {};
           return (
             <Tag {...linkProps} class="card" style="display:flex;flex-direction:column">
               <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
@@ -220,10 +220,10 @@ const icons: Record<string, string> = {
       <h2 class="serif h-xl" style="max-width:980px;margin-bottom:28px">Quality that keeps up with AI. <em>Let's build it.</em></h2>
       <p class="muted" style="font-size:19px;margin:0 0 32px;max-width:620px">Hiring for QA leadership, test automation or AI quality? Open to global and remote roles.</p>
       <div style="display:flex;flex-wrap:wrap;gap:12px">
-        <a href={`mailto:${siteConfig.social.email}`} class="btn btn-primary">Email</a>
-        <a href={resumeMail} class="btn btn-ghost-light">Request Résumé</a>
-        <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-light">LinkedIn ↗</a>
-        <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="btn btn-ghost-light">GitHub ↗</a>
+        <a href={`mailto:${siteConfig.social.email}`} data-goatcounter-click="email-contact" class="btn btn-primary">Email</a>
+        <a href={resumeMail} data-goatcounter-click="resume-request-contact" data-goatcounter-title="Request Résumé (contact section)" class="btn btn-ghost-light">Request Résumé</a>
+        <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" data-goatcounter-click="linkedin-contact" class="btn btn-ghost-light">LinkedIn ↗</a>
+        <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" data-goatcounter-click="github-contact" class="btn btn-ghost-light">GitHub ↗</a>
       </div>
     </div>
   </section>
