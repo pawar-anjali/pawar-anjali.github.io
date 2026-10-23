@@ -127,7 +127,6 @@ const icons: Record<string, string> = {
               <span class="xp-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={icons[g.category] ?? icons.default} /></svg>
               </span>
-              <span class="xp-num">{String(i + 1).padStart(2, "0")}</span>
             </div>
             <h3 class="serif" style="font-size:26px;margin:18px 0 6px">{g.category}</h3>
             {g.category.startsWith("AI") && <p class="xp-tag">Current focus</p>}
@@ -173,10 +172,6 @@ const icons: Record<string, string> = {
         <div>
           <p class="eyebrow">05 · Experience</p>
           <h2 class="serif h-lg">12 years of quality, <em>from first test to founding QA.</em></h2>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px">
-          <a href={resumeMail} class="btn btn-dark">Request Résumé →</a>
-          <span class="muted" style="font-size:13px">Sent personally, usually within a day.</span>
         </div>
       </div>
       {siteConfig.experience.map((job: any) => (
