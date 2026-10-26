@@ -1,34 +1,54 @@
 # anjalipawar.com
 
-Personal portfolio of Anjali Pawar — Senior SDET, Automation Architect, and AI Quality Engineer with 12+ years of experience shipping quality at scale.
+Personal website and blog of **Anjali Pawar**, AI Quality & QA Automation Lead | Playwright Expert.
 
-Live site: [anjalipawar.com](https://anjalipawar.com)
+Writing and projects on QA leadership, quality ownership, agentic QA and test automation infrastructure.
+
+**Live site:** [anjalipawar.com](https://anjalipawar.com)
 
 ---
-![anjalipawar.com preview](./public/preview.png)
 
-## About
+![anjalipawar.com homepage](./public/preview.png)
 
-This portfolio was built from scratch using AI-assisted development — collaborating with Claude by Anthropic to design content architecture, write technical copy, and make platform decisions. It demonstrates practical application of AI tools in a real engineering workflow.
+## What's on the site
 
-## Built With
+- **Hero:** headline, positioning and key numbers
+- **About:** career story, with a read-more toggle
+- **Blog:** short essays on how quality keeps up with AI, each linked to its LinkedIn discussion
+- **Expertise:** skills grouped into focused areas, from test automation to AI evaluation
+- **Projects:** hands-on AI quality and automation work, with GitHub links and status tags
+- **Experience:** roles from QA Engineer to Founding QA
+- **Credentials:** certifications and education
+- **Contact:** email, LinkedIn, GitHub and a résumé request
 
-- [Astro](https://astro.build) — Static site generator
-- [Tailwind CSS v4](https://tailwindcss.com) — Utility-first CSS
-- TypeScript — Type-safe configuration
-- GitHub Pages — Free static hosting
+## Built with
+
+- [Astro](https://astro.build): static site generator
+- [Tailwind CSS v4](https://tailwindcss.com): styling, with a custom design system in `src/styles/global.css`
+- TypeScript: typed content config
+- [GitHub Pages](https://pages.github.com) + GitHub Actions: hosting and automatic deploys
+- [GoatCounter](https://www.goatcounter.com): cookie-free, privacy-friendly analytics, including clicks on contact and project links
 - Custom domain via GoDaddy
 
-## Sections
+## How it was built
 
-- **Hero** — Name, title, stats, and quick links
-- **About** — Career story and core expertise
-- **Projects** — Real work with GitHub links
-- **Experience** — Cornerstone OnDemand, EdCast, WAGmob
-- **Credentials** — Certifications and education
-- **Contact** — Email, LinkedIn, GitHub
+Designed and built with AI-assisted development, working with Claude by Anthropic on content, design and code. Every change was checked visually at desktop, tablet and mobile widths with Playwright screenshots before going live.
 
-## Local Development
+## Project structure
+
+```
+src/
+  config.ts          All site content: about, skills, projects, experience
+  layouts/           Base layout (nav, footer, SEO) and blog post layout
+  pages/index.astro  Homepage
+  pages/blog/        Blog index and posts (one Markdown file per post)
+  styles/global.css  Design system: colours, type, components
+public/              Images, favicon, preview
+```
+
+To update content, edit `src/config.ts`. To add a blog post, add a Markdown file to `src/pages/blog/`.
+
+## Local development
 
 ```bash
 git clone https://github.com/pawar-anjali/pawar-anjali.github.io.git
@@ -39,8 +59,8 @@ npm run dev
 
 ## Deployment
 
-Deployed automatically via GitHub Actions on every push to `master`. Live at [anjalipawar.com](https://anjalipawar.com).
+Every push to `master` builds and deploys the site automatically with GitHub Actions.
 
 ---
 
-Built with intent. © 2026 Anjali Pawar
+© 2026 Anjali Pawar
