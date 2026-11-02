@@ -2,7 +2,7 @@
 import Base from "./Base.astro";
 import { fmtDate, pad } from "../lib";
 const { frontmatter } = Astro.props;
-const { title, description, date, image, imageAlt, topic, number, readMinutes, linkedin, tags = [] } = frontmatter;
+const { title, description, date, image, imageAlt, caption, topic, number, readMinutes, linkedin, tags = [] } = frontmatter;
 ---
 <Base title={`${title} | Anjali Pawar`} description={description} image={image} type="article">
   <article class="section">
@@ -15,7 +15,7 @@ const { title, description, date, image, imageAlt, topic, number, readMinutes, l
       {image && (
         <figure style="max-width:880px;margin:0 auto 56px">
           <img src={image} alt={imageAlt || ""} style="width:100%;border-radius:18px;border:1px solid var(--rule)" />
-          <figcaption class="figcap"><span>Fig. 01</span><span>Looks like full coverage. Actually has gaps.</span></figcaption>
+          {caption && <figcaption class="figcap"><span>Fig. 01</span><span>{caption}</span></figcaption>}
         </figure>
       )}
       <div class="article">
