@@ -13,7 +13,7 @@ const { title, description, date, image, imageAlt, caption, topic, number, readM
         <h1 class="serif h-lg" style="margin-bottom:40px">{title}</h1>
       </div>
       {image && (
-        <figure style="max-width:880px;margin:0 auto 56px">
+        <figure style="max-width:480px;margin:0 auto 56px">
           <img src={image} alt={imageAlt || ""} style="width:100%;border-radius:18px;border:1px solid var(--rule)" />
           {caption && <figcaption class="figcap"><span>Fig. 01</span><span>{caption}</span></figcaption>}
         </figure>
