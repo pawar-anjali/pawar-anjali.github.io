@@ -182,6 +182,12 @@ const chatIcon = "M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0
       }
       input.disabled = false; send.disabled = false;
       updateLeft();
+      // Show the suggested questions again, minus the ones already asked.
+      starters.querySelectorAll<HTMLButtonElement>(".ask-starter").forEach((b) => {
+        if (b.dataset.q?.toLowerCase() === q.toLowerCase()) b.remove();
+      });
+      starters.hidden = !starters.querySelector(".ask-starter") || input.disabled;
+      body.scrollTop = body.scrollHeight;
       if (!input.disabled) input.focus();
     };
 
