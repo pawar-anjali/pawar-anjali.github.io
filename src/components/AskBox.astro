@@ -1,0 +1,269 @@
+---
+// "Ask about Anjali" chat widget: a launcher fixed to the bottom-right corner.
+// Clicking it opens a chat panel. Answers come from a Cloudflare Worker (added later).
+// While ENDPOINT is empty, it shows a friendly "almost ready" reply instead.
+import { siteConfig } from "../config";
+
+const ENDPOINT = "https://broad-shadow-015b.er-anjali-pawar78.workers.dev/ask";
+const DAILY_LIMIT = 5;
+
+const email = siteConfig.social.email;
+const resumeMail = `mailto:${email}?subject=${encodeURIComponent("Résumé request")}&body=${encodeURIComponent("Hi Anjali,\n\nI'd like to request your résumé.\n\nName: \n\nThanks")}`;
+
+const starters = [
+  "What kind of roles is Anjali looking for?",
+  "What's her experience with Playwright?",
+  "Has she built QA teams from scratch?",
+  "What has she done in AI testing?",
+];
+
+const chatIcon = "M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6c-.5.4-1.3.1-1.3-.6V16A2.5 2.5 0 0 1 4 13.5z";
+---
+<div
+  class="ask-root"
+  data-endpoint={ENDPOINT}
+  data-limit={DAILY_LIMIT}
+  data-resume={resumeMail}
+  data-email={`mailto:${email}`}
+>
+  <!-- Chat panel (hidden until opened) -->
+  <section id="ask-panel" class="ask-panel" role="dialog" aria-modal="false" aria-labelledby="ask-title" hidden>
+    <header class="ask-top">
+      <img src="/anjali-avatar.jpg" alt="" width="40" height="40" class="ask-avatar" />
+      <div style="flex:1;min-width:0">
+        <h2 id="ask-title" class="ask-name">Ask about Anjali</h2>
+        <p class="ask-sub">AI assistant{!ENDPOINT && <span class="ask-badge">Preview</span>}</p>
+      </div>
+      <button type="button" class="ask-close" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </header>
+
+    <div class="ask-body">
+      <p class="ask-notice">
+        Answers come only from this website, with the source shown.
+        Questions are logged to improve answers. Please don't share personal details.
+      </p>
+      <div class="ask-msg ask-bot"><p>Hi 👋 Have any questions about my work? Pick one below or type your own.</p></div>
+      <div class="ask-log" role="log" aria-live="polite" aria-label="Conversation"></div>
+      <div class="ask-starters" aria-label="Suggested questions">
+        {starters.map((q) => (
+          <button type="button" class="ask-starter" data-q={q}>{q}</button>
+        ))}
+      </div>
+    </div>
+
+    <footer class="ask-bottom">
+      <form class="ask-form">
+        <label for="ask-input" class="sr-only">Your question</label>
+        <input id="ask-input" name="q" type="text" maxlength="300" autocomplete="off" placeholder="Ask about skills, projects or experience…" required />
+        <button type="submit" class="ask-send" aria-label="Send" data-goatcounter-click="ask-send">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </button>
+      </form>
+      <p class="ask-foot"><span class="ask-left"></span> AI can make mistakes.</p>
+    </footer>
+  </section>
+
+  <!-- Launcher -->
+  <button type="button" class="ask-launcher" aria-controls="ask-panel" aria-expanded="false" data-goatcounter-click="ask-open">
+    <img src="/anjali-avatar.jpg" alt="" width="48" height="48" class="ask-avatar ask-avatar-lg" />
+    <span class="ask-text">
+      <b>Ask about Anjali</b>
+      <span>Hi 👋 Have any questions?</span>
+    </span>
+    <span class="ask-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d={chatIcon} /><circle cx="8.5" cy="9.5" r="1.1" fill="#fff" /><circle cx="12" cy="9.5" r="1.1" fill="#fff" /><circle cx="15.5" cy="9.5" r="1.1" fill="#fff" /></svg>
+    </span>
+  </button>
+</div>
+
+<script>
+  type Source = { title: string; url: string };
+  type Reply = { answer: string; sources?: Source[]; handoff?: "resume" | "email" | null };
+
+  const root = document.querySelector<HTMLElement>(".ask-root");
+  if (root) {
+    const endpoint = root.dataset.endpoint || "";
+    const limit = Number(root.dataset.limit || 5);
+    const panel = root.querySelector<HTMLElement>(".ask-panel")!;
+    const launcher = root.querySelector<HTMLButtonElement>(".ask-launcher")!;
+    const closeBtn = root.querySelector<HTMLButtonElement>(".ask-close")!;
+    const body = root.querySelector<HTMLElement>(".ask-body")!;
+    const log = root.querySelector<HTMLElement>(".ask-log")!;
+    const form = root.querySelector<HTMLFormElement>(".ask-form")!;
+    const input = root.querySelector<HTMLInputElement>("#ask-input")!;
+    const send = root.querySelector<HTMLButtonElement>(".ask-send")!;
+    const left = root.querySelector<HTMLElement>(".ask-left")!;
+    const starters = root.querySelector<HTMLElement>(".ask-starters")!;
+    const history: { role: "user" | "assistant"; content: string }[] = [];
+
+    // Open / close
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      launcher.setAttribute("aria-expanded", String(open));
+      root.classList.toggle("is-open", open);
+      if (open) input.focus(); else launcher.focus();
+    };
+    launcher.addEventListener("click", () => setOpen(panel.hidden));
+    closeBtn.addEventListener("click", () => setOpen(false));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) setOpen(false); });
+
+    // Daily question counter (per browser). The Worker enforces the real limit.
+    const key = "ask-count-" + new Date().toISOString().slice(0, 10);
+    const getCount = () => { try { return Number(localStorage.getItem(key) || 0); } catch { return 0; } };
+    const bump = () => { try { localStorage.setItem(key, String(getCount() + 1)); } catch {} };
+    const updateLeft = () => {
+      const n = Math.max(0, limit - getCount());
+      left.textContent = `${n} of ${limit} questions left today.`;
+      if (n === 0) { input.disabled = true; send.disabled = true; input.placeholder = "Daily limit reached. Email or request the résumé."; }
+    };
+    updateLeft();
+
+    const bubble = (role: "user" | "bot", text: string) => {
+      const el = document.createElement("div");
+      el.className = `ask-msg ask-${role}`;
+      const p = document.createElement("p");
+      p.textContent = text;
+      el.appendChild(p);
+      log.appendChild(el);
+      body.scrollTop = body.scrollHeight;
+      return el;
+    };
+
+    const addExtras = (el: HTMLElement, r: Reply) => {
+      if (r.sources?.length) {
+        const s = document.createElement("p");
+        s.className = "ask-src";
+        s.append("Source: ");
+        r.sources.forEach((src, i) => {
+          const a = document.createElement("a");
+          a.href = src.url;
+          a.textContent = src.title;
+          if (i) s.append(", ");
+          s.appendChild(a);
+        });
+        el.appendChild(s);
+      }
+      if (r.handoff) {
+        const a = document.createElement("a");
+        a.className = "ask-handoff";
+        a.href = r.handoff === "resume" ? root.dataset.resume! : root.dataset.email!;
+        a.textContent = r.handoff === "resume" ? "Request Résumé" : "Email Anjali";
+        a.setAttribute("data-goatcounter-click", "ask-handoff-" + r.handoff);
+        el.appendChild(a);
+      }
+      body.scrollTop = body.scrollHeight;
+    };
+
+    // Used only while ENDPOINT is empty.
+    const notReady = (): Reply => ({
+      answer: "Thanks for asking! This assistant is almost ready. For now, you can email me or request my résumé.",
+      handoff: "resume",
+    });
+
+    const ask = async (q: string): Promise<Reply> => {
+      if (!endpoint) {
+        return notReady();
+      }
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: q, history: history.slice(-6) }),
+      });
+      if (res.status === 429) return { answer: "That's the daily limit for questions. Email or request the résumé to keep talking.", handoff: "email" };
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    };
+
+    const submit = async (q: string) => {
+      q = q.trim();
+      if (!q || send.disabled) return;
+      starters.hidden = true;
+      bubble("user", q);
+      history.push({ role: "user", content: q });
+      input.value = "";
+      input.disabled = true; send.disabled = true;
+      const wait = bubble("bot", "Thinking…");
+      wait.classList.add("ask-wait");
+      try {
+        const r = await ask(q);
+        wait.remove();
+        addExtras(bubble("bot", r.answer), r);
+        history.push({ role: "assistant", content: r.answer });
+        bump();
+      } catch {
+        wait.remove();
+        addExtras(bubble("bot", "Something went wrong. Please try again, or email directly."), { answer: "", handoff: "email" });
+      }
+      input.disabled = false; send.disabled = false;
+      updateLeft();
+      if (!input.disabled) input.focus();
+    };
+
+    form.addEventListener("submit", (e) => { e.preventDefault(); submit(input.value); });
+    starters.addEventListener("click", (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>(".ask-starter");
+      if (b) submit(b.dataset.q || "");
+    });
+  }
+</script>
+
+<style is:global>
+  .ask-root { position: fixed; right: 24px; bottom: 24px; z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; font-family: var(--sans); }
+
+  /* Launcher */
+  .ask-launcher { display: flex; align-items: center; gap: 14px; padding: 10px 10px 10px 10px; background: #fff; color: var(--ink); border: 1px solid var(--rule); border-radius: 999px; box-shadow: 0 16px 40px -14px rgba(15, 27, 45, .35); cursor: pointer; font: inherit; text-align: left; transition: transform .2s, box-shadow .2s; }
+  .ask-launcher:hover { transform: translateY(-2px); box-shadow: 0 20px 44px -14px rgba(15, 27, 45, .45); }
+  .ask-avatar { border-radius: 50%; object-fit: cover; flex: none; }
+  .ask-avatar-lg { width: 48px; height: 48px; border: 2px solid var(--teal-light); }
+  .ask-text { display: flex; flex-direction: column; line-height: 1.25; padding-right: 4px; }
+  .ask-text b { font-size: 16px; font-weight: 600; }
+  .ask-text span { font-size: 14px; color: var(--muted); }
+  .ask-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--teal); color: var(--teal); flex: none; }
+  .ask-icon svg path { fill: #fff; }
+  .ask-icon svg circle { fill: var(--teal); }
+  .ask-root.is-open .ask-text { display: none; }
+  @media (max-width: 520px) {
+    .ask-root { right: 16px; bottom: 16px; }
+    .ask-text span { display: none; }
+  }
+
+  /* Panel */
+  .ask-panel { width: min(400px, calc(100vw - 32px)); height: min(600px, calc(100vh - 120px)); display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--rule); border-radius: 20px; box-shadow: 0 24px 60px -20px rgba(15, 27, 45, .45); overflow: hidden; animation: askIn .2s ease-out; }
+  .ask-panel[hidden] { display: none; }
+  @keyframes askIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .ask-top { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ink); color: var(--paper); }
+  .ask-name { font-size: 16px; font-weight: 600; margin: 0; line-height: 1.2; }
+  .ask-sub { font-size: 12px; color: #B8C4D3; margin: 2px 0 0; display: flex; align-items: center; gap: 8px; }
+  .ask-badge { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; background: var(--amber); color: var(--ink); }
+  .ask-close { background: none; border: 0; color: var(--paper); cursor: pointer; padding: 6px; border-radius: 8px; display: grid; place-items: center; }
+  .ask-close:hover { background: rgba(255, 255, 255, .12); }
+
+  .ask-body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .ask-notice { font-size: 12px; color: var(--muted); margin: 0; padding: 8px 12px; border-left: 3px solid var(--teal); background: var(--paper); border-radius: 0 8px 8px 0; line-height: 1.5; }
+  .ask-log { display: flex; flex-direction: column; gap: 12px; }
+  .ask-log:empty { display: none; }
+  .ask-msg { max-width: 88%; padding: 10px 14px; border-radius: 14px; font-size: 15px; line-height: 1.5; }
+  .ask-msg p { margin: 0; }
+  .ask-user { align-self: flex-end; background: var(--ink); color: var(--paper); border-bottom-right-radius: 4px; }
+  .ask-bot { align-self: flex-start; background: #fff; border: 1px solid var(--rule); border-bottom-left-radius: 4px; }
+  .ask-wait { color: var(--muted); font-style: italic; }
+  .ask-src { font-size: 12px; color: var(--muted); margin-top: 6px !important; }
+  .ask-src a { color: var(--teal); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .ask-handoff { display: inline-flex; align-items: center; margin-top: 10px; min-height: 38px; padding: 0 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 14px; font-weight: 600; }
+  .ask-handoff:hover { background: var(--teal); }
+
+  .ask-starters { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .ask-starters[hidden] { display: none; }
+  .ask-starter { font: inherit; font-size: 14px; text-align: left; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--teal); background: transparent; color: var(--teal); cursor: pointer; transition: background .2s, color .2s; }
+  .ask-starter:hover { background: var(--teal); color: #fff; }
+
+  .ask-bottom { padding: 12px 16px 10px; border-top: 1px solid var(--rule); background: var(--card); }
+  .ask-form { display: flex; gap: 8px; }
+  .ask-form input { flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 0 16px; min-height: 44px; border: 1.5px solid var(--rule); border-radius: 999px; background: #fff; color: var(--ink); }
+  .ask-form input:focus { outline: none; border-color: var(--teal); }
+  .ask-send { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--amber); color: var(--ink); cursor: pointer; }
+  .ask-form input:disabled, .ask-send:disabled { opacity: .55; cursor: not-allowed; }
+  .ask-foot { font-size: 11px; color: var(--muted); margin: 8px 0 0; text-align: center; }
+</style>
