@@ -19,7 +19,7 @@ export const siteConfig: Config = {
     github: "https://github.com/pawar-anjali",
     twitter: "",
   },
-  aboutMe: `12+ years engineering quality into SaaS platforms that scale to 100 million users globally — across startup, acquisition, and enterprise scale.
+  aboutMe: `12+ years engineering quality into SaaS platforms that scale to 100 million users globally — across startup, acquisition, and enterprise scale. 5 years of that on Playwright automation.
 
 Started as a tester because I was curious about why software breaks. Stayed because I realised fixing the process was more interesting than fixing the bug.
 
@@ -29,7 +29,7 @@ That's when I realised: I wasn't just a QA engineer. I was managing programs.
 
 The skills came naturally from the work. Backlog management — because someone had to own the test debt and prioritise what got automated first. Stakeholder communication — because QA sits at the intersection of every team and someone had to translate between engineering reality and business expectations. Risk management — because every release is a risk decision, and I was the one making the case for what we could and couldn't ship. Team leadership — because scaling a QA function from one person to twelve means hiring, mentoring, and building a culture of quality, not just a suite of tests.
 
-Now working on both sides of AI quality. Using AI to test better: built an AI-powered QA agent on Playwright MCP, and a test failure finder that tells real regressions apart from automation, environment and performance issues. Testing AI itself: building a RAG application evaluated with DeepEval and Promptfoo.`,
+Now working on both sides of AI quality, with 2 years in AI testing: AI-assisted testing, and testing non-deterministic LLM output with Promptfoo, DeepEval and LLM-as-a-Judge. Using AI to test better: built an AI-powered QA agent on Playwright MCP, and a test failure finder that tells real regressions apart from automation, environment and performance issues. Testing AI itself: building a RAG application evaluated with DeepEval and Promptfoo.`,
   skills: [
     { category: "Test Automation Frameworks", items: ["Playwright", "REST Assured", "Selenium"] },
     { category: "Programming & CI/CD", items: ["Java", "Python", "JavaScript", "Jenkins", "Docker", "Git", "GitHub Actions"] },
