@@ -128,19 +128,7 @@ const chatIcon = "M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0
     };
 
     const addExtras = (el: HTMLElement, r: Reply) => {
-      if (r.sources?.length) {
-        const s = document.createElement("p");
-        s.className = "ask-src";
-        s.append("Source: ");
-        r.sources.forEach((src, i) => {
-          const a = document.createElement("a");
-          a.href = src.url;
-          a.textContent = src.title;
-          if (i) s.append(", ");
-          s.appendChild(a);
-        });
-        el.appendChild(s);
-      }
+      // Sources are still returned by the Worker (used in testing), but not shown here.
       if (r.handoff) {
         const a = document.createElement("a");
         a.className = "ask-handoff";
