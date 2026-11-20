@@ -85,7 +85,7 @@ Now working on both sides of AI quality, with 2 years in AI testing: AI-assisted
       title: "Founding QA",
       company: "Stealth startup",
       dateRange: "Jan 2026 - Present",
-      summary: "Owns quality end to end as the first QA hire, from requirements to deployment. Built the test automation framework from the ground up and set the test strategy for AI features, including evaluating non-deterministic LLM output. Works directly with founders, Product and Engineering, and makes the release calls.",
+      summary: "Owns quality end to end as the first QA hire, from requirements to deployment. Built the test automation framework from the ground up and set the test strategy for AI features, including evaluating non-deterministic LLM output. Currently integrating Playwright MCP into the automation framework. Works directly with founders, Product and Engineering, and makes the release calls.",
       highlights: ["AI quality testing", "Framework built from scratch", "Requirements → deployment"],
       bullets: [],
     },
