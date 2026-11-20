@@ -109,10 +109,35 @@ const chatIcon = "M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0
     const key = "ask-count-" + new Date().toISOString().slice(0, 10);
     const getCount = () => { try { return Number(localStorage.getItem(key) || 0); } catch { return 0; } };
     const bump = () => { try { localStorage.setItem(key, String(getCount() + 1)); } catch {} };
+    // Shown once when the daily limit is reached, so suggestions never "do nothing".
+    let limitShown = false;
+    const limitNotice = () => {
+      if (limitShown) return;
+      limitShown = true;
+      const el = document.createElement("div");
+      el.className = "ask-msg ask-bot";
+      const p = document.createElement("p");
+      p.textContent = "That's today's 5 questions. To keep talking, email Anjali or request the résumé.";
+      el.appendChild(p);
+      const a = document.createElement("a");
+      a.className = "ask-handoff";
+      a.href = root.dataset.resume!;
+      a.textContent = "Request Résumé";
+      a.setAttribute("data-goatcounter-click", "ask-handoff-limit");
+      el.appendChild(a);
+      log.appendChild(el);
+      body.scrollTop = body.scrollHeight;
+    };
+
     const updateLeft = () => {
       const n = Math.max(0, limit - getCount());
       left.textContent = `${n} of ${limit} questions left today.`;
-      if (n === 0) { input.disabled = true; send.disabled = true; input.placeholder = "Daily limit reached. Email or request the résumé."; }
+      if (n === 0) {
+        input.disabled = true; send.disabled = true;
+        input.placeholder = "Daily limit reached. Email or request the résumé.";
+        starters.hidden = true;
+        limitNotice();
+      }
     };
     updateLeft();
 
@@ -150,11 +175,20 @@ const chatIcon = "M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0
       if (!endpoint) {
         return notReady();
       }
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: q, history: history.slice(-6) }),
-      });
+      // Give up after 20 seconds so the chat never hangs on "Thinking…".
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 20000);
+      let res: Response;
+      try {
+        res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: q, history: history.slice(-6) }),
+          signal: controller.signal,
+        });
+      } finally {
+        clearTimeout(timer);
+      }
       if (res.status === 429) return { answer: "That's the daily limit for questions. Email or request the résumé to keep talking.", handoff: "email" };
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
@@ -178,7 +212,7 @@ const chatIcon = "M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0
         bump();
       } catch {
         wait.remove();
-        addExtras(bubble("bot", "Something went wrong. Please try again, or email directly."), { answer: "", handoff: "email" });
+        addExtras(bubble("bot", "Sorry, that took too long or something went wrong. Please try again, or email Anjali directly."), { answer: "", handoff: "email" });
       }
       input.disabled = false; send.disabled = false;
       updateLeft();
