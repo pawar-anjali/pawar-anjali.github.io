@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/Post.astro
-title: "Building an AI chatbot that knows when to say \"I don't know\""
+title: "How I built an AI chatbot that knows when to say \"I don't know\""
 description: "How the Ask about Anjali assistant works, the four rules it must never break, and the day it stopped answering because of a change nobody made."
 date: 2026-11-20
 number: 4
