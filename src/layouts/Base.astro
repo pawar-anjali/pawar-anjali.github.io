@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { siteConfig } from "../config";
+import AskBox from "../components/AskBox.astro";
 
 interface Props {
   title?: string;
@@ -73,5 +74,6 @@ const resumeMail = `mailto:${siteConfig.social.email}?subject=${encodeURICompone
         </span>
       </div>
     </footer>
+      <AskBox />
   </body>
 </html>
